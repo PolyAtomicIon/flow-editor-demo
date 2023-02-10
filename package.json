@@ -10,19 +10,20 @@
     "lint": "eslint --ext .js,.ts,.vue ./"
   },
   "dependencies": {
-    "@vue-flow/background": "workspace:*",
+    "@quasar/extras": "^1.15.4",
+    "@vue-flow/background": "^1.0.3",
     "@vue-flow/controls": "workspace:*",
     "@vue-flow/core": "workspace:*",
     "@vue-flow/minimap": "workspace:*",
-    "@quasar/extras": "^1.15.4",
+    "@vue-flow/node-toolbar": "^1.0.4",
     "quasar": "^2.9.2",
     "vue": "^3.2.37",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@quasar/app-vite": "^1.0.5",
-    "@vitejs/plugin-vue": "^2.3.4",
     "@types/node": "^18.8.3",
+    "@vitejs/plugin-vue": "^2.3.4",
     "autoprefixer": "^10.4.12"
   },
   "engines": {

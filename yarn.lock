@@ -211,7 +211,7 @@
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-2.3.4.tgz#966a6279060eb2d9d1a02ea1a331af071afdcf9e"
   integrity sha512-IfFNbtkbIm36O9KB8QodlwwYvTEsJb4Lll4c2IwB3VHc2gie2mSPtSzL0eYay7X2jd/2WX02FjSGTWR6OPr/zg==
 
-"@vue-flow/background@workspace:*":
+"@vue-flow/background@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@vue-flow/background/-/background-1.0.3.tgz#663fa65e821c1b54abe7512f990ec011aac40823"
   integrity sha512-bg9+m+F8VRKKO73mcQLg3ST9q21e6OZJppsrO1Q80dJlw5WCf3wwcbDqvAKxBmSDXYLa6SFGeDUZRhOSx+x9hw==
@@ -238,6 +238,11 @@
   dependencies:
     d3-selection "^3.0.0"
     d3-zoom "^3.0.0"
+
+"@vue-flow/node-toolbar@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@vue-flow/node-toolbar/-/node-toolbar-1.0.4.tgz#d420b3eec5c4a727330653d325c3f98ab129d5d5"
+  integrity sha512-ndyXMMcgnnkc7cuKqKmUYWHwZWRDY8BjS5ZH+WoVuCoHPZ/ql3OIoh3Qbm7vcjEsTJZm0mYwXNpU/HxqVt01qQ==
 
 "@vue/compiler-core@3.2.47":
   version "3.2.47"
