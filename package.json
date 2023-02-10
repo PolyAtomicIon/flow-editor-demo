@@ -1,0 +1,33 @@
+{
+  "name": "quasar-examples",
+  "version": "0.0.1",
+  "description": "Vue Flow Quasar Examples",
+  "productName": "Quasar App",
+  "author": "bcakmakoglu <78412429+bcakmakoglu@users.noreply.github.com>",
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "lint": "eslint --ext .js,.ts,.vue ./"
+  },
+  "dependencies": {
+    "@vue-flow/background": "workspace:*",
+    "@vue-flow/controls": "workspace:*",
+    "@vue-flow/core": "workspace:*",
+    "@vue-flow/minimap": "workspace:*",
+    "@quasar/extras": "^1.15.4",
+    "quasar": "^2.9.2",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "^1.0.5",
+    "@vitejs/plugin-vue": "^2.3.4",
+    "@types/node": "^18.8.3",
+    "autoprefixer": "^10.4.12"
+  },
+  "engines": {
+    "node": "^18 || ^16 || ^14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
