@@ -45,50 +45,82 @@ onConnect((params) => addEdges([params]));
 
 const actions = ref([]);
 const redoActions = ref([]);
-let currentAction = reactive({});
+let currentDragAction = reactive({});
+
+onConnect((e) => {
+  const id = `e${e.source}-${e.target}`;
+
+  const action = {
+    id,
+    source: e.source,
+    target: e.target,
+    undo() {
+      elements.value = elements.value.filter((element) => {
+        const elementId = `e${element.source}-${element.target}`;
+        return elementId !== this.id;
+      });
+      applyNodeChanges(elements.value);
+    },
+    redo() {
+      elements.value.push({
+        id: this.id,
+        source: this.source,
+        target: this.target,
+        arrowHeadType: "arrowclosed",
+      });
+      applyNodeChanges(elements.value);
+    },
+  };
+
+  actions.value.push(action);
+});
 
 onNodeDragStart((e) => {
-  currentAction.id = e.node.id;
-  currentAction.position = e.node.position;
+  currentDragAction.id = e.node.id;
+  currentDragAction.position = e.node.position;
 });
 
 onNodeDragStop((e) => {
-  currentAction.newPosition = e.node.position;
-  currentAction.type = e.node.type;
-  currentAction.undo = () => {
-    const node = elements.value.find((el) => el.id === currentAction.id);
-    node.position = currentAction.position;
+  const dragAction = {
+    id: e.node.id,
+    position: currentDragAction.position,
+    newPosition: e.node.position,
+    undo() {
+      elements.value = elements.value.map((element) => {
+        if (element.id === this.id) {
+          element.position = this.position;
+        }
+        return element;
+      });
+      applyNodeChanges(elements.value);
+    },
+    redo() {
+      elements.value = elements.value.map((element) => {
+        if (element.id === this.id) {
+          element.position = this.newPosition;
+        }
+        return element;
+      });
+      applyNodeChanges(elements.value);
+    },
   };
-  actions.value.push(currentAction);
-  currentAction = {};
+
+  actions.value.push(dragAction);
+  currentDragAction = reactive({});
 });
 
 const undoAction = () => {
   const action = actions.value.pop();
   redoActions.value.push(action);
-  elements.value = elements.value.map((element) => {
-    if (element.id === action.id) {
-      element.position = action.position;
-    }
-    return element;
-  });
-  applyNodeChanges(elements.value);
+  action.undo();
 };
 
 const redoAction = () => {
   const action = redoActions.value.pop();
-  elements.value = elements.value.map((element) => {
-    if (element.id === action.id) {
-      element.position = action.newPosition;
-    }
-    return element;
-  });
-  applyNodeChanges(elements.value);
+  actions.value.push(action);
+  action.redo();
 };
 
-/**
- * Resets the current viewpane transformation (zoom & pan)
- */
 const resetTransform = () => {
   setTransform({ x: 0, y: 0, zoom: 1.3 });
   fitView();

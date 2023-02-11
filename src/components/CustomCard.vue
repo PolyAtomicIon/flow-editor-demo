@@ -21,7 +21,6 @@ defineProps({
       <Handle type="target" class="handler" :position="Position.Top" />
 
       <div class="row items-center no-wrap">
-        <!-- add cool icon here -->
         <q-icon name="home" size="1rem" class="q-mr-sm" />
         <span>{{ label }}</span>
       </div>
@@ -64,6 +63,6 @@ defineProps({
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #113285;
+  background-color: #7fc71a;
 }
 </style>
